@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: nikolay.uzunov
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: enabled
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false

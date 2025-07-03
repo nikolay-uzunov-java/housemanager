@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: nikolay.uzunov
+      changes:
+        - createTable:
+            tableName: authorities
+            columns:
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: authority
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+
+        - addPrimaryKey:
+            tableName: authorities
+            columnNames: email, authority
+            constraintName: authorities_pk
+
+        - addForeignKeyConstraint:
+            baseTableName: authorities
+            baseColumnNames: email
+            referencedTableName: users
+            referencedColumnNames: email
+            constraintName: fk_authorities_users
+            onDelete: CASCADE
